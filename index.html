@@ -1,0 +1,474 @@
+<!-- 
+    Multi-line comment:
+    Name: Muhammad
+    Course: Web Development 20S
+    Teacher: Ms. Hoitink
+    School: Pembina Trails Collegiate (PTC)
+    Date Last Modified: 9/26/2024
+    GitHub username: huznot
+    GitHub repo link: https://github.com/huznot/Web-Project-1
+
+    Resources and credits:
+    -I used chatgpt for help in making an overlay under the text on the first 2 pages because
+    the tutorials were very confusing and did not work. The prompt I entered was "create html/css 
+    code for an over that goes over a background image but under the text in a div so the text can stand out"
+    -The card design was sourced from a previous project I made a while ago however I did add some things within it
+    like adding text inside and an overlay when you hover over it.
+    -For creating the iframe background video, I used this video as a guide: https://www.youtube.com/watch?v=F0UP2jQL_AA 
+    -For creating alternating table row color I used https://www.geeksforgeeks.org/how-to-set-alternate-table-row-color-using-css/ 
+    -->
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Winnipeg</title>
+        <script src="https://kit.fontawesome.com/b5f4641468.js" crossorigin="anonymous"></script>
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+            /* Global styles */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box; 
+            }
+    
+            body {
+                font-family: 'Arial', sans-serif; 
+            }
+    
+            /* Home section styling */
+            #home-section {
+                background-image: url('images/morning.jpg'); 
+                background-size: cover;
+                background-position: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                position: relative;
+                background-attachment: fixed;
+            }
+    
+            /* Overlay for home section */
+            #home-section::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.4); 
+                z-index: 1;
+            }
+    
+            /* Container for main content */
+            .container {
+                text-align: center;
+                color: white;
+                z-index: 2; 
+            }
+    
+            /* Main heading styles */
+            h1 {
+                font-size: 80px;
+                font-weight: bold;
+            }
+            .credit{
+                margin-top: 40px;
+            }
+    
+            /* Button styles for primary button */
+            .button {
+                margin-top: 20px;
+                padding: 15px 30px;
+                font-size: 20px;
+                color: white;
+                background: transparent;
+                border: 2px solid white;
+                border-radius: 25px;
+                cursor: pointer;
+                transition: background 0.3s;
+            }
+    
+            /* Button styles for secondary button */
+            .button2 {
+                margin-top: 20px;
+                padding: 15px 30px;
+                font-size: 20px;
+                color: rgb(0, 0, 0);
+                background: transparent;
+                border: 2px solid rgb(0, 0, 0);
+                border-radius: 25px;
+                cursor: pointer;
+                transition: background 0.3s;
+            }
+    
+            /* Hover effects for buttons */
+            .button:hover {
+                background: white;
+                color: black;
+            }
+    
+            .button2:hover {
+                background: black;
+                color: white;
+            }
+    
+            /* Navigation bar styling */
+            nav {
+                position: absolute;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 2;
+                background-color: rgba(255, 255, 255, 0.2); 
+                border-radius: 50px;
+                padding: 15px 20px;
+            }
+    
+            /* Navigation links styling */
+            nav ul {
+                list-style: none;
+                display: flex;
+                gap: 20px;
+            }
+    
+            nav ul li {
+                display: inline;
+            }
+    
+            nav ul li a {
+                color: white; 
+                text-decoration: none;
+                font-size: 16px;
+            }
+    
+            nav ul li a:hover {
+                text-decoration: underline;
+            }
+    
+            /* About section styling */
+            #about {
+                position: relative;
+                height: 100vh; 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden; 
+            }
+    
+            /* Background iframe for About section */
+            #about iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                pointer-events: none;
+                z-index: 1;
+            }
+    
+            /* Overlay for About section */
+            #about::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5); 
+                z-index: 2;
+            }
+    
+            /* Content styling for About section */
+            .about-content {
+                position: relative;
+                z-index: 3;
+                color: white;
+                text-align: center;
+                padding: 20px;
+            }
+    
+            .about-content h1 {
+                font-size: 48px;
+            }
+    
+            .about-content p {
+                font-size: 24px;
+                margin-top: 20px;
+            }
+    
+            /* Attractions section styling */
+            #attractions {
+                position: relative;
+                padding: 50px;
+                background-color: #e0e0e0;
+                color: rgb(0, 0, 0);
+                text-align: center;
+            }
+    
+            #attractions h1 {
+                margin-bottom: 30px;
+            }
+    
+            /* Card styles */
+            .card {
+                width: 400px;
+                height: 600px;
+                border-radius: 10px;
+                overflow: hidden;
+                position: relative;
+                color: rgb(240, 240, 240);
+                box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+                margin: 20px;
+                display: inline-block;
+                vertical-align: top;
+                transition: transform 0.3s;
+            }
+    
+            .card:hover {
+                transform: scale(1.05);
+            }
+    
+            /* Image styling within cards */
+            .card img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 0.9;
+                transition: opacity 0.2s ease-out;
+            }
+    
+            /* Overlay for cards */
+            .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.7);
+                opacity: 0;
+                transition: opacity 0.3s;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 20px;
+                color: white;
+            }
+    
+            /* Overlay text styles */
+            .overlay h2 {
+                margin-top: 30px;
+                font-size: 40px;
+                line-height: 1.3;
+            }
+    
+            .overlay p {
+                font-size: 20px;
+                line-height: 1.6;
+            }
+            .credit-video{
+                text-align: center;
+            }
+    
+            /* Show overlay on card hover */
+            .card:hover .overlay {
+                opacity: 1;
+            }
+    
+            /* Button within card content */
+            .card-content .button {
+                display: inline-block;
+                margin-top: 10px;
+                padding: 10px 20px;
+                background: transparent;
+                color: inherit;
+                text-decoration: none;
+                border: 2px solid currentColor;
+                border-radius: 25px;
+                transition: background 0.3s;
+            }
+    
+            /* Hover effect for card button */
+            .card-content .button:hover {
+                background: rgba(255, 255, 255, 0.2);
+            }
+    
+            /* Link styles */
+            a {
+                color: #76d4ff;
+            }
+    
+            #history-table{
+                height: 100vh;
+            }
+    
+            /* History table section */
+            #history-table h1 {
+                text-align: center;
+                margin-top: 32px;
+            }
+    
+            #history-table table {
+                width: 80%; /* Table width */
+                margin: 32px auto;
+                border-collapse: collapse; /* Collapse borders */
+            }
+    
+            #history-table th, 
+            #history-table td {
+                padding: 10px; /* Cell padding */
+                border: 1px solid #dddddd; /* Cell border */
+                text-align: center; /* Center text */
+            }
+    
+            #history-table tr:nth-child(even) { /* used for alternating */
+                background-color: #f2f2f2; 
+            }
+    
+            /* Button container */
+            .button-div {
+                text-align: center; /* Center buttons */
+                margin-top: 16px; /* Space above */
+            }
+    
+            /* Secondary button styles */
+            .button2 {
+                margin-top: 20px;
+                padding: 15px 30px;
+                background: transparent; 
+                color: rgb(0, 0, 0); /* White text */
+                border: 2px solid rgb(0, 0, 0);
+                border-radius: 25px;
+                cursor: pointer; /* Pointer cursor on hover */
+                font-size: 16px; /* Text size */
+            }
+    
+            /* Hover effect for secondary button */
+            .button2:hover {
+                background: black;
+                color: white; 
+            }
+    
+    
+    
+        </style>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#home-section">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#attractions">Attractions</a></li>
+                    <li><a href="#history-table">History</a></li>
+                </ul>
+            </nav>
+        </header>
+    
+        <main>
+            <!-- Home Section -->
+            <section id="home-section">
+                <div class="container">
+                    <h1>Winnipeg</h1>
+                    <a href="#about"><button class="button">See more <i class="fa-solid fa-arrow-up-right-from-square"></i></button></a>
+                    <p class="credit">*Image via <a href="https://www.flickr.com/photos/43296902@N00/52118804932/">flickr</a></p>
+    
+                </div>
+            </section>
+    
+            <!-- About Section -->
+            <section id="about">
+                <figure>
+                    <iframe src="https://www.youtube.com/embed/ZVeH47RSeGA?si=Lh_PrS54IvVuTNtM&autoplay=1&rel=0&mute=1&loop=1&playlist=ZVeH47RSeGA&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </figure>
+    
+                <div class="about-content">
+                    <h1>Welcome to Winnipeg</h1>
+                    <p>Discover the <mark>beauty</mark> of the city with its <mark>cultural landmarks</mark> and <mark>scenic landscapes.</mark></p>
+                    <p class="video-credit"> <br> <br><em> Video Via <a href="https://www.youtube.com/watch?v=ZVeH47RSeGA&list=TLGGbnKJlTLohEkyNjA5MjAyNA&t=1s">YouTube</em></a></p>
+                </div>
+            </section>
+    
+            <!-- Attractions Section -->
+            <section id="attractions">
+                <h1>Attractions</h1>
+                
+                <!-- Card for Manitoba Legislative Building -->
+                <div class="card">
+                    <img src="images/mlb.jpg" alt="Image of the Manitoba Legislative Building">
+                    <div class="overlay">
+                        <h2>Manitoba Legislative Building</h2>
+                        <p><u>The Manitoba Legislative Building</u> is the seat of the provincial government. It’s known for its impressive architecture and the Golden Boy statue on top.</p>
+                        <p><em>Image via <a href="https://commons.wikimedia.org/wiki/File:Manitoba_Legislative_building_exterior_(J).jpg">Wikimedia Commons</em></a></p>
+                    </div>
+                </div>
+
+                <!-- Card for Human Rights Museum -->
+                <div class="card">
+                    <img src="images/Human_Rights_Museum_Sept_2022.jpg" alt="Image of the Canadian Museum for Human Rights">
+                    <div class="overlay">
+                        <h2>Canadian Museum for Human Rights</h2>
+                        <p>This museum is dedicated to the history and importance of <u>human rights.</u> Its modern design is one of Winnipeg’s most recognizable landmarks.</p>
+                        <p><em>Image via <a href="https://commons.wikimedia.org/wiki/File:Human_Rights_Museum_Sept_2022.jpg">Wikimedia Commons</em></a></p>
+                    </div>
+                </div>
+
+                <!-- Card for The Forks -->
+                <div class="card">
+                    <img src="images/forks.jpg" alt="Image of The Forks, a popular Winnipeg destination">
+                    <div class="overlay">
+                        <h2>The Forks</h2>
+                        <p><u>The Forks</u> is a popular gathering place where visitors can explore shops, restaurants, and walking paths near the river.</p>
+                        <p><i>Image via <a href="https://www.flickr.com/photos/time-to-look/36099659992">flickr</i></a></p>
+                    </div>
+                </div>
+
+            </section>
+    
+            <!-- History Table Section -->
+            <article id="history-table">
+                <h1>Key points in Winnipeg history</h1>
+                <table>
+                    <tr>
+                        <th>Year</th>
+                        <th>Event</th>
+                        <th>Significance</th>
+                    </tr>
+                    <tr>
+                        <td><strong>1738</strong></td>
+                        <td>Fort Rouge established</td>
+                        <td>First European presence in Winnipeg area</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1873</strong></td>
+                        <td>Winnipeg Incorporation</td>
+                        <td>Winnipeg officially inaugurated as a city</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1919</strong></td>
+                        <td>Winnipeg General Strike</td>
+                        <td>Largest strike in Canadian history</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1999</strong></td>
+                        <td>Opening of Human Rights Museum</td>
+                        <td>First national museum outside of Ottawa opens</td>
+                    </tr>
+                </table>
+                
+                <!-- Button to travel to Winnipeg -->
+                <div class="button-div">
+                    <a href="form.html"><button class="button2">Travel to Winnipeg</button></a>
+    
+                </div>
+            </article>
+        </main>
+        
+    
+    </body>
+    </html>

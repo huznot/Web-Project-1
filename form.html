@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            background-image: url(images/winnipeg-manitoba.jpg);
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        .title {
+            font-size: 50px;
+            margin-top: 50px;
+        }
+        label {
+            display: block; /* Force labels to be block elements */
+            margin-bottom: 5px; /* Space between label and input */
+            text-align: left; /* Align text left */
+        }
+        input {
+            background-color: #e0e0e0;
+            border: 2px solid #353535;
+            border-radius: 5px;
+            width: 100%; /* Full width */
+            height: 40px;
+            margin-bottom: 20px; /* Space between inputs */
+            padding: 5px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            background-color: rgb(186, 255, 255);
+            border-color: #007BFF;
+        }
+        #box {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            height: 80%;
+        }
+        #button {
+            margin-top: 20px;
+            padding: 10px 30px;
+            font-size: 19px;
+            color: rgb(255, 255, 255);
+            background: transparent;
+            border: 2px solid rgb(255, 255, 255);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+        }
+        #button:hover {
+            background: rgb(255, 255, 255);
+            color: black;
+        }
+        a {
+            color: #76d4ff;
+        }
+        fieldset {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <div id="box">
+                <!-- Main Title for the Travel Form (this is my replacement for a legend inside a fieldset)-->
+                <h1 class="title">Travel to Winnipeg</h1>
+
+                <!-- Attribution for the background image source -->
+                <p class="background-credit">Background via <a href="https://www.publicdomainpictures.net/en/view-image.php?image=341308&picture=">Public Domain Pictures</a></p>
+                
+                <!-- Link to go back to the homepage -->
+                <a href="index.html">Go Back</a>
+
+                <!-- Start of the Travel Form. This is used as a container for different inputs and more to create a form. Action is undefined because that is for backend-->
+                <form action="">
+                    <!-- Fieldset is used to group all input fields together -->
+                    <fieldset>
+
+                        <!-- Input for the user's full name -->
+                        <label for="name">Name</label> <!--Label is used to link text to an input for a description about the input-->
+                        <input type="text" id="name" placeholder="Name"> <!--This input will get any time of text from the user-->
+
+                        <!-- Input for the user's email address -->
+                        <label for="email">Email</label> <!--Label is used to link text to an input for a description about the input-->
+                        <input type="email" id="email" placeholder="Email"> <!--This input will get an email from the user-->
+
+                        <!-- Input for the user's phone number -->
+                        <label for="tel">Number</label> <!--Label is used to link text to an input for a description about the input-->
+                        <input type="tel" id="tel" placeholder="Phone Number"> <!--This input will get a phone number from the user-->
+
+                        <!-- Input for the start date of travel -->
+                        <label for="from">Date from</label> <!--Label is used to link text to an input for a description about the input-->
+                        <input type="date" id="from"> <!--This input will get a date from the user. This is also the input that we did not cover in class-->
+
+                        <!-- Input for the end date of travel -->
+                        <label for="to">Date to</label> <!--Label is used to link text to an input for a description about the input-->
+                        <input type="date" id="to"> <!--This input will get a date from the user. This is also the input that we did not cover in class-->
+
+                        <!-- Submit button -->
+                        <button id="button">Submit</button>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
